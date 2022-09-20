@@ -1,4 +1,3 @@
-import styles from '../styles/Home.module.css';
 import { useState } from 'react';
 import Button from '../components/button';
 
@@ -12,57 +11,78 @@ export default function Home() {
     residence: 'United Kingdom',
   });
 
-  const editAge = () => {
+  const change = () => {
     setProfile((otherStates) => {
-      if (profile.age === 25) {
-        return { ...otherStates, age: 30 };
+      if (
+        profile.age === 25 &&
+        profile.maritalStatus === 'Single' &&
+        profile.residence === 'United Kingdom'
+      ) {
+        return {
+          ...otherStates,
+          age: 30,
+          maritalStatus: 'Married',
+          residence: 'Finland',
+        };
       }
-      return { ...otherStates, age: 25 };
-    });
-  };
-
-  const changeStatus = () => {
-    setProfile((otherStates) => {
-      if (profile.maritalStatus === 'Single') {
-        return { ...otherStates, maritalStatus: 'Married' };
-      }
-      return { ...otherStates, maritalStatus: 'Single' };
-    });
-  };
-
-  const editResidence = () => {
-    setProfile((otherStates) => {
-      if (profile.residence === 'United Kingdom') {
-        return { ...otherStates, residence: 'Finland' };
-      }
-      return { ...otherStates, residence: 'United Kingdom' };
+      return {
+        ...otherStates,
+        age: 25,
+        maritalStatus: 'Single',
+        residence: 'United Kingdom',
+      };
     });
   };
 
   return (
     <section>
-      <h1>My Profile</h1>
+      <h1
+        style={{ textDecoration: 'underline', color: 'blue', fontSize: '4rem' }}
+      >
+        My Profile
+        <Button onClick={change} />
+      </h1>
+
       <article>
-        <label>Name: {profile.name}</label>
-
         <div>
-          <label>Age: {profile.age}</label>
-          <Button onClick={editAge} />
+          <label>
+            Name: <span>{profile.name}</span>
+          </label>
+          <Button
+            onClick={() => {
+              setProfile((otherStates) => {
+                if (profile.name === 'Kelvin Squishy') {
+                  return { ...otherStates, name: 'Nana Appiah Kwadwo Obeng' };
+                }
+                return { ...otherStates, name: 'Kelvin Squishy' };
+              });
+            }}
+          />
         </div>
 
-        <label>Occupation: {profile.occupation}</label>
+        <label>
+          Age: <span>{profile.age}</span>
+        </label>
 
         <div>
-          <label>Marital status: {profile.maritalStatus}</label>
-          <Button onClick={changeStatus} />
+          <label>
+            Occupation: <span>{profile.occupation}</span>
+          </label>
         </div>
 
-        <label>Natiinality: {profile.nationality}</label>
+        <label>
+          Marital status: <span>{profile.maritalStatus}</span>
+        </label>
 
         <div>
-          <label>Residence: {profile.residence}</label>
-          <Button onClick={editResidence} />
+          <label>
+            Nationality: <span>{profile.nationality}</span>
+          </label>
         </div>
+
+        <label>
+          Residence: <span>{profile.residence}</span>
+        </label>
       </article>
     </section>
   );

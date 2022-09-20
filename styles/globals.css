@@ -4,12 +4,27 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 * {
   box-sizing: border-box;
 }
 
-h1 {
-  margin: 0;
+button {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+label {
+  color: rgb(29, 29, 107);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+span {
+  color: #000;
 }
